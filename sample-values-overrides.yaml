@@ -216,12 +216,10 @@ deploykf_opt:
   ##            deploykf-mysql
   ## --------------------------------------
   deploykf_mysql:
-    {} # <-- REMOVE THIS, IF YOU INCLUDE VALUES UNDER THIS SECTION!
-
     ## if an embedded MySQL instance will be deployed
     ##  - https://www.deploykf.org/guides/tools/external-mysql/
     ##
-    #enabled: false
+    enabled: false
 
 ## --------------------------------------------------------------------------------
 ##                                  kubeflow-tools
@@ -232,27 +230,23 @@ kubeflow_tools:
   ##                 katib
   ## --------------------------------------
   katib:
-    {} # <-- REMOVE THIS, IF YOU INCLUDE VALUES UNDER THIS SECTION!
-
     ## mysql connection configs
     ##  - https://www.deploykf.org/guides/tools/external-mysql/#2-connect-katib
     ##  - we recommend storing credentials in a Secret, rather than in plaintext
     ##
-    #mysql:
-    #  useExternal: true
-    #  host: "mysql.example.com"
-    #  port: 3306
-    #  auth:
-    #    #username: kubeflow
-    #    #password: password
-    #    existingSecret: "katib--mysql-auth" # <-- YOUR EXISTING SECRET, IN 'kubeflow' NAMESPACE
-    #    existingSecretUsernameKey: "username"
-    #    existingSecretPasswordKey: "password"
+    mysql:
+      useExternal: true
+      host: "c-e0m1u09a75ujm93utag8.rw.mdb.nemax.nebius.cloud"
+      port: 3306
+      auth:
+        existingSecret: "cloned--katib-mysql-secret" # <-- YOUR EXISTING SECRET, IN 'kubeflow' NAMESPACE
+        existingSecretUsernameKey: "username"
+        existingSecretPasswordKey: "password"
 
     ## mysql database name
     ##  - you must create this database in your MySQL instance
     ##
-    #mysqlDatabase: katib
+    mysqlDatabase: katib
 
   ## --------------------------------------
   ##               notebooks
@@ -342,24 +336,22 @@ kubeflow_tools:
     ##  - https://www.deploykf.org/guides/tools/external-mysql/#3-connect-kubeflow-pipelines
     ##  - we recommend storing credentials in a Secret, rather than in plaintext
     ##
-    #mysql:
-    #  useExternal: true
-    #  host: "mysql.example.com"
-    #  port: 3306
-    #  auth:
-    #    #username: kubeflow
-    #    #password: password
-    #    existingSecret: "kubeflow-pipelines--mysql-auth" # <-- YOUR EXISTING SECRET, IN 'kubeflow' NAMESPACE
-    #    existingSecretUsernameKey: "username"
-    #    existingSecretPasswordKey: "password"
+    mysql:
+      useExternal: true
+      host: "c-e0m1u09a75ujm93utag8.rw.mdb.nemax.nebius.cloud"
+      port: 3306
+      auth:
+        existingSecret: "kubeflow-pipelines--mysql-auth" # <-- YOUR EXISTING SECRET, IN 'kubeflow' NAMESPACE
+        existingSecretUsernameKey: "username"
+        existingSecretPasswordKey: "password"
 
     ## mysql database names
     ##  - you must create these databases in your MySQL instance
     ##
-    #mysqlDatabases:
-    #  cacheDatabase: kfp_cache
-    #  metadataDatabase: kfp_metadata
-    #  pipelinesDatabase: kfp_pipelines
+    mysqlDatabases:
+      cacheDatabase: kfp_cache
+      metadataDatabase: kfp_metadata
+      pipelinesDatabase: kfp_pipelines
 
     ## configs specific to Kubeflow Pipelines v2
     ##
