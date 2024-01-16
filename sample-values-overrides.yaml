@@ -145,8 +145,6 @@ deploykf_core:
         ## the default Kubeflow Pipelines configs for profiles
         ##
         kubeflowPipelines:
-          {} # <-- REMOVE THIS, IF YOU INCLUDE VALUES UNDER THIS SECTION!
-
           ## the default Kubeflow Pipelines object store auth configs for profiles
           ##  - https://www.deploykf.org/guides/tools/external-object-store/#authentication
           ##  - the matching secret is CLONED into the profile namespace for use by Kubeflow Pipelines
@@ -154,11 +152,11 @@ deploykf_core:
           ##  - you can have all profiles share the same secret, by removing '{profile_name}' from the name
           ##  - you may override these defaults for a specific profile definition
           ##
-          #objectStoreAuth:
-          #  existingSecret: "kubeflow-pipelines--profile-object-store-auth--{profile_name}"
-          #  existingSecretNamespace: "my-namespace-with-the-secrets"
-          #  existingSecretAccessKeyKey: "access_key"
-          #  existingSecretSecretKeyKey: "secret_key"
+          objectStoreAuth:
+            existingSecret: "kubeflow-pipelines--backend-object-store-auth"
+            existingSecretNamespace: "kubeflow"
+            existingSecretAccessKeyKey: "key-id"
+            existingSecretSecretKeyKey: "secret-key"
 
     ## user entities
     ##  - https://www.deploykf.org/guides/platform/deploykf-profiles/#user-entities
@@ -205,12 +203,10 @@ deploykf_opt:
   ##            deploykf-minio
   ## --------------------------------------
   deploykf_minio:
-    {} # <-- REMOVE THIS, IF YOU INCLUDE VALUES UNDER THIS SECTION!
-
     ## if an embedded MinIO instance will be deployed
     ##  - https://www.deploykf.org/guides/tools/external-object-store/
     ##
-    #enabled: false
+    enabled: false
 
   ## --------------------------------------
   ##            deploykf-mysql
@@ -311,26 +307,24 @@ kubeflow_tools:
     ##  - https://www.deploykf.org/guides/tools/external-object-store/#2-connect-kubeflow-pipelines
     ##
     objectStore:
-      {} # <-- REMOVE THIS, IF YOU INCLUDE VALUES UNDER THIS SECTION!
-
       ## object store connection configs
       ##
-      #useExternal: true
-      #host: s3.amazonaws.com
-      #port: ""
-      #useSSL: true
+      useExternal: true
+      host: storage.nemax.nebius.cloud
+      port: ""
+      useSSL: true
 
       ## object store auth configs
       ##  - we recommend storing credentials in a Secret, rather than in plaintext
       ##  - this auth is used by the backend, in-profile auth is configured by 'deploykf-profiles-generator'
       ##
-      #auth:
-      #  fromEnv: false
-      #  #accessKey: my-access-key
-      #  #secretKey: my-secret-key
-      #  existingSecret: "kubeflow-pipelines--object-store-auth" # <-- YOUR EXISTING SECRET, IN 'kubeflow' NAMESPACE
-      #  existingSecretAccessKeyKey: "AWS_ACCESS_KEY_ID"
-      #  existingSecretSecretKeyKey: "AWS_SECRET_ACCESS_KEY"
+      auth:
+        fromEnv: false
+        #accessKey: my-access-key
+        #secretKey: my-secret-key
+        existingSecret: "kubeflow-pipelines--backend-object-store-auth" # <-- YOUR EXISTING SECRET, IN 'kubeflow' NAMESPACE
+        existingSecretAccessKeyKey: "key-id"
+        existingSecretSecretKeyKey: "secret-key"
 
     ## mysql connection configs
     ##  - https://www.deploykf.org/guides/tools/external-mysql/#3-connect-kubeflow-pipelines
@@ -356,12 +350,10 @@ kubeflow_tools:
     ## configs specific to Kubeflow Pipelines v2
     ##
     kfpV2:
-      {} # <-- REMOVE THIS, IF YOU INCLUDE VALUES UNDER THIS SECTION!
-
       ## apply fixes to make MinIO work with KFP v2
       ##  - you must set this to 'false' if you are using an external object store
       ##
-      #minioFix: false
+      minioFix: false
 
   ## profile resource generation configs
   ##
