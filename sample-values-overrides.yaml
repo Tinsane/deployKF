@@ -350,6 +350,7 @@ kubeflow_tools:
     ## configs specific to Kubeflow Pipelines v2
     ##
     kfpV2:
+      defaultPipelineRoot: "s3://{bucket_name}/v2/artifacts/{profile_name}"
       ## apply fixes to make MinIO work with KFP v2
       ##  - you must set this to 'false' if you are using an external object store
       ##
