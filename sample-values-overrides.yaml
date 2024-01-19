@@ -253,7 +253,7 @@ kubeflow_tools:
     ##  - https://www.deploykf.org/guides/tools/kubeflow-notebooks/
     ##
     spawnerFormDefaults:
-      {} # <-- REMOVE THIS, IF YOU INCLUDE VALUES UNDER THIS SECTION!
+      hideRegistry: false
 
       ## Jupyter-like Container Images
       ##  - https://www.deploykf.org/guides/tools/kubeflow-notebooks/#container-images

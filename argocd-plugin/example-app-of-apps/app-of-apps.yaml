@@ -14,7 +14,7 @@ spec:
     ##    file, but you may use any repo (even one with no files)
     ##
     repoURL: "https://github.com/Tinsane/deployKF.git"
-    targetRevision: "s3-1" # <-- replace with a deployKF repo tag!
+    targetRevision: "cr-1" # <-- replace with a deployKF repo tag!
     path: "."
 
     ## plugin configuration
