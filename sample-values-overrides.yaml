@@ -73,6 +73,14 @@ deploykf_dependencies:
     #       - "kubeflow-argo-workflows"
     #     registryCredentials: []
 
+kubeflow_dependencies:
+
+  ## --------------------------------------
+  ##        kubeflow-argo-workflows
+  ## --------------------------------------
+  kubeflow_argo_workflows:
+    enabled: false
+    namespace: kubeflow-argo-workflows
 
 ## --------------------------------------------------------------------------------
 ##                                  deploykf-core
