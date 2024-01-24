@@ -54,7 +54,27 @@ deploykf_dependencies:
   ##                kyverno
   ## --------------------------------------
   kyverno:
-    {} # <-- REMOVE THIS, IF YOU INCLUDE VALUES UNDER THIS SECTION!
+    clusterPolicies:
+      imagePullSecrets:
+        enabled: true
+        excludeNamespaces:
+          - "argocd"
+          - "kube-system"
+          - "kube-public"
+          - "kube-node-lease"
+          - "weave"
+          - "istio-system"
+          - "deploykf-mysql"
+          - "deploykf-minio"
+          - "deploykf-dashboard"
+          - "deploykf-auth"
+          - "deploykf-istio-gateway"
+          - "kubeflow-argo-workflows"
+        registryCredentials:
+        ##     - `existingSecret`: the name of an existing 'kubernetes.io/dockerconfigjson' type secret
+        ##     - `existingSecretNamespace`: the namespace containing the existing secret (default: `kyverno.namespace`)
+          - existingSecret: regcred
+            existingSecretNamespace: kyverno
 
 ## --------------------------------------------------------------------------------
 ##                                  deploykf-core
