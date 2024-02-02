@@ -379,9 +379,7 @@ kubeflow_tools:
   ## profile resource generation configs
   ##
   profileResourceGeneration:
-    {} # <-- REMOVE THIS, IF YOU INCLUDE VALUES UNDER THIS SECTION!
-
     ## if a PodDefault named "kubeflow-pipelines-api-token" should be generated in each profile namespace
     ##  - https://www.deploykf.org/user-guides/access-kubeflow-pipelines-api/#authenticate-with-kubernetes-serviceaccount-token
     ##
-    #kfpApiTokenPodDefault: true
+    kfpApiTokenPodDefault: true
